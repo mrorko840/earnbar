@@ -7,12 +7,18 @@
                   <p>Home</p>
               </a>
           </div>
-          <div class="col">
+          {{-- <div class="col">
               <a href="{{ route('user.analytics') }}" class="{{ request()->path() == 'user/analytics' ? 'active' : '' }}">
                   <i class="material-icons">pie_chart</i>
                   <p>Analytics</p>
               </a>
-          </div>
+          </div> --}}
+          <div class="col">
+            <a href="{{ route('pages', 'about-us') }}" class="{{ request()->path() == 'about-us' ? 'active jumpBtn' : '' }}">
+                <i class="material-icons">contact_support</i>
+                <p>About Us</p>
+            </a>
+        </div>
           <div class="col">
               <a href="{{ route('plans') }}" class="text-center d-flex justify-content-center">
                 <div style="height: 56px; width: 56px; margin-top: -23px;" class="rounded-circle shadow d-flex align-items-center {{ request()->path() == 'plans' ? 'bg-orange-light text-orange' : 'bg-default-light text-default' }}">

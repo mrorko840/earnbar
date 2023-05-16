@@ -77,26 +77,18 @@
 
                     <!-- Scroling Notice -->
                     <div class="container mb-3">
-                        <div class="row mx-0">
+                        <div class="row align-items-center">
                             <div class="col-12">
-                                <div class="card border-0">
-                                    <div class="card-body p-0">
-                                        <div class="row">
-                                            <div
-                                                class="col-auto d-flex align-items-center justify-content-center border-custom bg-warning-light text-warning">
+                                <div class="card">
+                                    <div class="card-body py-0">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto bg-warning-light text-warning border-custom pt-1">
                                                 <span class="material-icons">campaign</span>
                                             </div>
-                                            <div class="col align-items-center px-0 mx-0 pt-1">
+                                            <div class="col pt-1 px-0">
                                                 <marquee behavior="scroll" direction="left">
-                                                    @php
-                                                        echo $noticeCaption->data_values->scrolingNotice;
-                                                    @endphp
+                                                    {{ $noticeCaption->data_values->scrolingNotice }}
                                                 </marquee>
-                                            </div>
-                                            <div style="font-size: 10px"
-                                                class="col-auto d-flex align-items-center justify-content-center border-custom bg-default-secondary">
-                                                <span style="font-size: 17px" class="material-icons pr-1">groups</span>
-                                                <b id="dynamic_counter"></b>
                                             </div>
                                         </div>
                                     </div>
@@ -190,19 +182,19 @@
 
                             <div class="col pr-2">
 
-                                <a href="{{ $yourLinks->data_values->video }}" target="blank">
+                                <a href="{{ $yourLinks->data_values->telegram }}" target="blank">
                                     <div class="card border-0">
                                         <div class="card-body">
                                             <div class="row align-items-center">
 
                                                 <div class="col align-self-center pr-0">
-                                                    <h6 class="mb-1">Video Tutorial</h6>
+                                                    <h6 class="mb-1">Support Admin</h6>
                                                     <p class="small text-secondary">Click here</p>
                                                 </div>
                                                 <div class="col-auto">
                                                     <div
-                                                        class="avatar avatar-50 border-0 bg-danger-light rounded-circle text-danger">
-                                                        <i class="material-icons vm text-template">smart_display</i>
+                                                        class="avatar avatar-50 border-0 bg-default-light rounded-circle text-default">
+                                                        <i class="material-icons vm text-template">telegram</i>
                                                     </div>
                                                 </div>
 
@@ -282,7 +274,7 @@
                     </div> --}}
 
                     <!-- Swiper Our Reviews-->
-                    <div class="container mb-4">
+                    {{-- <div class="container mb-4">
                         <div class="row mb-3">
                             <div class="col">
                                 <h6 class="subtitle mb-0">Our Reviews</h6>
@@ -328,7 +320,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
 
 
