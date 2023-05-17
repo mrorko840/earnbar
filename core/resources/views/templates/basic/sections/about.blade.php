@@ -11,7 +11,8 @@
             <div class="card bg-warning text-white">
                 <div class="card-body text-center">
                     <h4>{{ @$aboutCaption->data_values->heading }}</h4>
-                    <h6>{{ @$aboutCaption->data_values->sub_heading }}</h6>
+                    <h6>{{ @$aboutCaption->data_values->sub_heading_1 }}</h6>
+                    <h6>{{ @$aboutCaption->data_values->sub_heading_2 }}</h6>
                 </div>
             </div>
         </div>

@@ -71,17 +71,18 @@
          "builder":true,
          "name":"About Us",
          "element": {
-         "images":{
-                  "image":{
-                  "size":"400x200"
-                  }
-               },
-               
-               "modal": true
+            "images":{
+                     "image":{
+                     "size":"400x200"
+                     }
+                  },
+                  
+                  "modal": true
          },
         "content":{
             "heading":"text",
-            "sub_heading":"text",
+            "sub_heading_1":"text",
+            "sub_heading_2":"text",
             "description":"textarea-nic",
             "images":{
                "new_collab":{}
