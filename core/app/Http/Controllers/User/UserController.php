@@ -362,8 +362,6 @@ class UserController extends Controller
         }
 
         
-
-        //$user->balance -= $plan->price;
         $user->balance -= $plan->price;
         $user->daily_limit = $plan->daily_limit;
         $user->expire_date = now()->addDays($plan->validity);
@@ -386,7 +384,7 @@ class UserController extends Controller
         $transaction->remark = 'subscribe_plan';
         $transaction->save();
 
-        levelCommission($user, $plan->price, 'plan_subscribe_commission', $trx);
+        // levelCommission($user, $plan->price, 'plan_subscribe_commission', $trx);
 
         notify($user, 'BUY_PLAN', [
             'plan_name' => $plan->name,

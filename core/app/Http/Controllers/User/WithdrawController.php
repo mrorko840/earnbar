@@ -79,7 +79,7 @@ class WithdrawController extends Controller
 
     public function withdrawSubmit(Request $request)
     {
-        if ($request->withdrawPass == auth()->user()->withdraw_password) {
+        // if ($request->withdrawPass == auth()->user()->withdraw_password) {
             
             $withdraw = Withdrawal::with('method','user')->where('trx', session()->get('wtrx'))->where('status', 0)->orderBy('id','desc')->firstOrFail();
     
@@ -151,11 +151,11 @@ class WithdrawController extends Controller
             $cls = 'success';
             $notify = 'Withdraw request sent successfully!';
             return response()->json(['msg'=>$notify, 'cls'=>$cls]);
-        } else {
-            $cls = 'error';
-            $notify = 'Withdraw Password is Wrong!';
-            return response()->json(['msg'=>$notify, 'cls'=>$cls]);
-        }
+        // } else {
+        //     $cls = 'error';
+        //     $notify = 'Withdraw Password is Wrong!';
+        //     return response()->json(['msg'=>$notify, 'cls'=>$cls]);
+        // }
 
     }
 

@@ -11,7 +11,7 @@
             </div>
             <!-- Modal Body Start Here -->
             <div id="withdrawModalBody" class="modal-body">
-                @if (!auth()->user()->plan)
+                @if (!auth()->user()->plan || auth()->user()->expire_date < now())
                     @if (auth()->user()->withdraw_password)
                         @include($activeTemplate . 'user.withdraw.ajax_withdraw')
                     @else

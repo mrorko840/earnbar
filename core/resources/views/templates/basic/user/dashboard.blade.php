@@ -312,7 +312,7 @@
                                 </div>
                             </div>
                             <div class="col align-self-center">
-                                <h6 class="mb-1">Refer and Earn Rewards</h6>
+                                <h6 class="mb-1">Refer your friends and earn <b class="text-success">3$</b></h6>
                                 <p class="small text-secondary">Share your referal link and start earning</p>
                                 
                                 <div class="input-group">

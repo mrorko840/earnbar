@@ -75,7 +75,21 @@
             
 
             <div class="container mb-4">
-                <h6 class="subtitle mb-3">Recently Invited friends</h6>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-auto pr-0">
+                                <div class="avatar avatar-50 border-0 bg-danger-light rounded-circle text-danger">
+                                    <i class="material-icons vm text-template">warning</i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                Conditions: The person entering through your link must make a minimum deposit of 50 dollars
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="subtitle mb-3 text-center">Team Member - <b class="text-info">{{$refUsers->count()}}</b></h6>
                 <div class="row">
                     @forelse($refUsers as $data)
                         <div class="col-12 mb-2">
@@ -95,8 +109,8 @@
                             </div>
                         </div>
                     @empty
-                        <div>
-                            <div align="center" colspan="100%" class="text-center text-danger">{{ __($emptyMessage) }}!</div>
+                        <div class="col text-center">
+                            <h6 class="text-danger">{{ __($emptyMessage) }}!</h6>
                         </div>
                     @endforelse
                 </div>

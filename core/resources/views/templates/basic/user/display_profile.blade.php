@@ -295,7 +295,7 @@
                                     </div>
                                 </a>
 
-                                <a href="{{ route('user.withdraw.password') }}" class="list-group-item list-group-item-action border-color">
+                                {{-- <a href="{{ route('user.withdraw.password') }}" class="list-group-item list-group-item-action border-color">
                                     <div class="row">
                                         <div class="col-auto pl-0">
                                             <div class="avatar avatar-50 bg-default-light text-default rounded-right">
@@ -307,7 +307,7 @@
                                             <p class="text-secondary">Setup Withdraw Password</p>
                                         </div>
                                     </div>
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                     </div>
