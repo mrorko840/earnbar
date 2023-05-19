@@ -25,10 +25,10 @@
                             <img class="border-custom"
                                 src="{{ getImage('assets/images/frontend/blog/' . $blog->data_values->image) }}" width="100%"
                                 alt="image">
-                            <div class="text-center text-info">
+                            {{-- <div class="text-center text-info">
                                 <span class="date">{{ $blog->created_at->format('d') }}</span>
                                 <span class="month">{{ $blog->created_at->format('M') }}</span>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="card-body">
                             <h4 class="blog-details__title">{{ __($blog->data_values->title) }}</h4>

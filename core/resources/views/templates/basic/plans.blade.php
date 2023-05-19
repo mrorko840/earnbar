@@ -50,7 +50,9 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="show-filter text-end">
-                                        <button type="button" class="btn btn-warning border-custom showFilterBtn btn-sm"><i class="las la-low-vision"></i> @lang('Details')</button>
+                                        <button type="button" class="btn btn-warning border-custom showFilterBtn btn-sm eYeBtn">
+                                            <i id="eYe" class="las la-low-vision"></i> @lang('Details')
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -183,6 +185,11 @@
 
         //run on window load
         userInfo()
+
+        $(document).on('click', '.eYeBtn', function () {
+            $('#eYe').toggleClass('la-low-vision');
+            $('#eYe').toggleClass('la-eye');
+        });
 
 
         $(document).on('click', '.buyBtn', function() {

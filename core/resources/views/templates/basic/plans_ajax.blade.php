@@ -55,14 +55,11 @@
                                 </div>
                                 <div class="col-auto align-self-center text-right">
                                     @if (@auth()->user()->runningPlan && @auth()->user()->plan_id == $plan->id)
-                                        <button
-                                            class="package-disabled btn btn-sm border-custom btn-outline-light">@lang('Current')</button>
-                                    @elseif(@auth()->user()->runningPlan && @auth()->user()->plan_id > $plan->id)
-                                        <button
-                                            class="package-disabled btn btn-sm border-custom btn-outline-light">@lang('Locked')</button>
+                                        <button class="package-disabled btn btn-sm border-custom btn-outline-light">@lang('Current')</button>
+                                    @elseif(@auth()->user()->runningPlan)
+                                        <button class="package-disabled btn btn-sm border-custom btn-outline-light">@lang('Locked')</button>
                                     @else
-                                        <button class="buyBtn btn btn-sm border-custom btn-outline-light"
-                                            data-id="{{ $plan->id }}">@lang('BUY NOW')</button>
+                                        <button class="buyBtn btn btn-sm border-custom btn-outline-light" data-id="{{ $plan->id }}">@lang('BUY NOW')</button>
                                     @endif
                                 </div>
                             </div>

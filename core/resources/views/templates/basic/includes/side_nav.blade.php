@@ -105,7 +105,7 @@ $yourLinks = getContent('links.content', true);
                     <span class="arrow material-icons">chevron_right</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ route('pages', 'about-us') }}">
                     <div>
                         <span class="material-icons icon">contact_support</span>
@@ -113,7 +113,7 @@ $yourLinks = getContent('links.content', true);
                     </div>
                     <span class="arrow material-icons">chevron_right</span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
         <div class="text-center">
             <a href="{{ route('user.logout') }}" class="btn btn-outline-danger text-white rounded my-3 mx-auto">Sign out</a>

@@ -236,13 +236,12 @@
 
 
                     <!-- PWA add to home display -->
-                    <div class="container mb-4">
+                    {{-- <div class="container mb-4">
                         <div class="card" id="addtodevice">
                             <div class="card-body text-center">
                                 <div class="row mb-3">
                                     <div class="col-10 col-md-4 mx-auto">
                                         <img src="{{ asset($activeTemplateTrue . 'assets/img/add-to-home.png') }}" alt="" class="mw-100 border-custom">
-                                        {{-- <img src="{{ asset($activeTemplateTrue . 'assets/img/install-app.png') }}" alt="" class="mw-100"> --}}
                                     </div>
                                 </div>
 
@@ -252,7 +251,7 @@
                                     class="btn btn-sm btn-default px-4 rounded" id="addtohome">Install</button>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- PWA add to home display -->
 
                     <div class="container mb-4">

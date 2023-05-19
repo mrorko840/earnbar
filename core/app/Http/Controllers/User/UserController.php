@@ -340,12 +340,12 @@ class UserController extends Controller
         
         $user = auth()->user();
 
-        if ($user->plan_id > $plan->id) {
+        // if ($user->plan_id > $plan->id) {
 
-            $cls = 'error';
-            $notify = 'You couldn\'t downgrade your Membership Plan';
-            return response()->json(['msg'=>$notify, 'cls'=>$cls]);
-        }
+        //     $cls = 'error';
+        //     $notify = 'You couldn\'t downgrade your Membership Plan';
+        //     return response()->json(['msg'=>$notify, 'cls'=>$cls]);
+        // }
 
         if ($plan->price > $user->balance) {
 

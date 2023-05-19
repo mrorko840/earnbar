@@ -1,6 +1,26 @@
 @extends($activeTemplate . 'layouts.master')
 @section('content')
     <style>
+        .main .main-container {
+            border-radius: 20px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            background: rgba( 255, 255, 255, 0.15 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 7px );
+            -webkit-backdrop-filter: blur( 7px );
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+        }
+        .rewardBackground {
+            background-image: url('{{asset('assets/images/customBanners/reward-background.png')}}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center top;
+        }
+        .text-shadow-purple {
+            text-shadow: #4a2fa9 1px 0 10px;
+        }
+
         .StyleFont {
             font-family: "Times New Roman", Times, serif;
         }
@@ -120,7 +140,7 @@
         @include($activeTemplate . 'includes.side_nav')
 
         <!-- Begin page content -->
-        <main class="flex-shrink-0 main has-footer">
+        <main class="flex-shrink-0 main has-footer rewardBackground">
             <!-- Fixed navbar -->
             @include($activeTemplate . 'includes.top_nav')
 
@@ -145,10 +165,10 @@
                     <div class="row">
                         <div class="col-12 text-center">
                             @if (auth()->user()->isClick < date('Ymd'))
-                                <h5 class="text-primary" id="btnMsg">Click this button to collect
+                                <h5 class="text-white text-shadow-purple" id="btnMsg">Click this button to collect
                                     {{ $user->plan?->ads_rate }} {{ $general->cur_sym }}</h5>
                             @else
-                                <h5 class="text-success text-danger">You can collect Reward Tomorrow!</h5>
+                                {{-- <h5 class="text-success text-danger text-shadow-purple">You have Already collect The Reward!</h5> --}}
                             @endif
                         </div>
                         {{-- <div class="col-12 text-center">
@@ -181,10 +201,10 @@
                         <div class="col-12 text-center">
                             @if (auth()->user()->isClick < date('Ymd'))
                                 <div id="loadBtn">
-                                    <img id="runTask" width="180px" height="180px" class="rounded-circle shadow" src="{{asset('assets/templates/basic/assets/img/button/playBtn.png')}}" alt="">
+                                    <img id="runTask" width="100px" height="100px" class="rounded-circle shadow" src="{{asset('assets/templates/basic/assets/img/button/playBtn.png')}}" alt="">
                                 </div>
                             @else
-                                <img id="runTask" width="180px" height="180px" class="rounded-circle shadow" src="{{asset('assets/templates/basic/assets/img/button/pauseBtn.png')}}" alt="">
+                                <img id="runTask" width="100px" height="100px" class="rounded-circle shadow" src="{{asset('assets/templates/basic/assets/img/button/pauseBtn.png')}}" alt="">
                             @endif
                         </div>
 
@@ -209,7 +229,14 @@
 
                         </div> --}}
 
-                        <div class="col-12 py-2 text-center">
+                        <div class="col-12 py-2 text-center text-white text-shadow-purple">
+                            @if (auth()->user()->isClick < date('Ymd'))
+                                <h5 class="tradeOn d-none">Your Robot Trading Is On</h5>
+                                <h6 class="tradeOn d-none">It will Expire:</h6>
+                            @else
+                                <h5 class="tradeOn">Your Robot Trading Is On</h5>
+                                <h6 class="tradeOn">It will Expire:</h6>
+                            @endif
                             <h5 id="counter"></h5>
                         </div>
                     </div>
@@ -231,6 +258,9 @@
         let adsRate = {{ $user->plan?->ads_rate ? $user->plan?->ads_rate : '0' }};
         let planID = {{ $user->plan?->id ? $user->plan?->id : '0' }};
 
+        let plan = '{{ auth()->user()->plan }}';
+        let expire_date = '{{ auth()->user()->expire_date }}';
+        let now = '{{now()}}'
         //userinFo
         const userInfo = function() {
             $.ajax({
@@ -254,16 +284,13 @@
         //noTask
         $(document).on('click', '#noTask', function (e) {
             e.preventDefault();
-            notifyMsg('You have already collect Todays Reward!', 'error');
+            notifyMsg('You have Already collect This Reward!', 'error');
         });
 
         //runTask
         $(document).on('click', '#runTask', function(e) {
             e.preventDefault();
-            $("#loadBtn").html(
-                `<img id="noTask" width="180px" height="180px" class="rounded-circle shadow" src="{{asset('assets/templates/basic/assets/img/button/pauseBtn.png')}}" alt="">`
-            );
-            if (planID > 0) {
+            if (planID > 0 && expire_date > now) {
                 if( isClicked < {{date('Ymd')}} ){
                     let reward = adsRate;
                     $.ajax({
@@ -274,16 +301,18 @@
                         },
                         success: function(res) {
                             notifyMsg(res.msg, res.cls);
-                            $("#btnMsg").html('You can collect Reward Tomorrow!').addClass('text-danger');
+                            $("#btnMsg").html('');
     
                             $("#loadBtn").html(
-                                `<img id="runTask" width="180px" height="180px" class="rounded-circle shadow" src="{{asset('assets/templates/basic/assets/img/button/pauseBtn.png')}}" alt="">`
+                                `<img id="runTask" width="100px" height="100px" class="rounded-circle shadow" src="{{asset('assets/templates/basic/assets/img/button/pauseBtn.png')}}" alt="">`
                             );
                             userInfo()
+
+                            $('.tradeOn').removeClass('d-none');
                         }
                     });
                 }else{
-                    notifyMsg('You have already collect Todays Reward!', 'error');
+                    notifyMsg('You have Already collect This Reward!', 'error');
                 }
             } else {
                 notifyMsg('Upgrade Your Plan at first!', 'warning');

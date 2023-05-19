@@ -283,15 +283,26 @@
                     </div>
 
                 </div>
+
+                
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="row mb-3">
+                            <div class="col-12 mx-auto"><img src="{{ asset('assets/images/customBanners/news-banner-1.jpeg') }}" alt="" class="mw-100 border-custom"></div>
+                        </div>
+                        <a href="{{ route('blog') }}" class="btn btn-sm btn-default px-4 rounded border-0">All News</a>
+                    </div>
+                </div>
+
+
             </div>
 
             <!-- PWA add to home display -->
-            <div class="container mb-4">
+            {{-- <div class="container mb-4">
                 <div class="card" id="addtodevice">
                     <div class="card-body text-center">
                         <div class="row mb-3">
                             <div class="col-10 col-md-4 mx-auto"><img src="{{ asset($activeTemplateTrue . 'assets/img/add-to-home.png') }}" alt="" class="mw-100 border-custom"></div>
-                            {{-- <div class="col-10 col-md-4 mx-auto"><img src="{{ asset($activeTemplateTrue . 'assets/img/install-app.png') }}" alt="" class="mw-100"></div> --}}
                         </div>
 
                         <h5 class="text-dark">Add to <span class="font-weight-bold">Home screen</span></h5>
@@ -299,7 +310,7 @@
                         <button data-toggle="modal" data-target="#appDownloadModal" class="btn btn-sm btn-default px-4 rounded border-0" id="addtohome">Install</button>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- PWA add to home display -->
 
             <div class="container mb-4">
@@ -323,8 +334,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
