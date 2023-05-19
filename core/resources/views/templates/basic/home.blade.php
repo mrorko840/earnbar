@@ -231,6 +231,11 @@
                             </div>
 
                         </div>
+
+                        <div class="mt-4">
+                                <img src="{{ asset('assets/images/customBanners/news-banner-1.jpeg') }}" alt="" class="mw-100 border-custom shadow-sm">
+                        </div>
+
                     </div>
 
 
