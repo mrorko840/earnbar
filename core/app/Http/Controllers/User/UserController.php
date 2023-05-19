@@ -49,29 +49,20 @@ class UserController extends Controller
                                     ->whereDate('created_at', Carbon::today())
                                     ->sum('amount');
 
-        //for remove plan if 
-        // $hostname = env('DB_HOST');
-        // $username = env('DB_USERNAME');
-        // $password = env('DB_PASSWORD');
-
-        // $dbname = env('DB_DATABASE');
-
-        // $conn = new mysqli($hostname, $username, $password, $dbname);
-
-        // if ($user->plan_price > $user->balance){
-        //     $sql = "UPDATE users SET plan_id='0', daily_limit='0' WHERE id=$user->id";
-
-        //     $conn->query($sql);
-        // }
-
         $plans = Plan::where('status',1)->get();
         $referrals['deposit'] = Referral::where('commission_type', 'deposit_commission')->get();
         $referrals['plan'] = Referral::where('commission_type', 'plan_subscribe_commission')->get();
         $referrals['ads'] = Referral::where('commission_type', 'ptc_view_commission')->get();
+        
+        //collectCapital function call
+        if ($user->plan && $user->expire_date < now()) {
+            $this->collectCapital();
+        }
 
         return view($this->activeTemplate . 'user.dashboard', compact('pageTitle', 'total', 'plans', 'referrals', 'today', 'chart', 'user', 'total_invest', 'total_ptc_earn', 'today_ptc_earn','total_commission','ptc'));
     }
 
+    //runTask
     public function runTask(Request $request){
         $user = auth()->user();
 
@@ -95,7 +86,9 @@ class UserController extends Controller
         }
 
         $me = User::where('id', auth()->user()->id)->first();
-        $me->balance += ($request->reward + $user->plan->price); //user balance plus plan price
+        $me->balance += $request->reward; //user balance + reword only
+
+        // $me->balance += ($request->reward + $user->plan->price); //user balance plus plan price
         $me->isClick = date("Ymd");
         $me->save();
 
@@ -121,6 +114,19 @@ class UserController extends Controller
         $cls = 'success';
         $notify = 'Today\'s reward collect Successfully!';
         return response()->json(['msg'=>$notify, 'cls'=>$cls]);
+    }
+
+    //collectCapital
+    public function collectCapital(){
+        $user = auth()->user();
+        if($user->plan && $user->plan_price > 0){
+            $user->balance += $user->plan->price;
+            $user->plan_price = 0;
+            $user->save();
+            return false;
+        }else{
+            return false;
+        }
     }
 
     public function userInfo(){
@@ -554,4 +560,6 @@ class UserController extends Controller
         $notify = 'Balance transferred successfully!';
         return response()->json(['msg'=>$notify, 'cls'=>$cls]);
     }
+
+
 }

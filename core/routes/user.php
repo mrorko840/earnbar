@@ -61,6 +61,9 @@ Route::middleware('auth')->name('user.')->group(function () {
                 //runTask
                 Route::post('run-task', 'runTask')->name('runtask');
 
+                //collectCapital
+                Route::get('collect-capital', 'collectCapital')->name('collectCapital');
+
                 //2FA
                 Route::get('twofactor', 'show2faForm')->name('twofactor');
                 Route::post('twofactor/enable', 'create2fa')->name('twofactor.enable');
