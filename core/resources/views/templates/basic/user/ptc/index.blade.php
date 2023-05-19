@@ -1,6 +1,9 @@
 @extends($activeTemplate . 'layouts.master')
 @section('content')
     <style>
+        .main-container {
+            margin-top: 80px;
+        }
         .main .main-container {
             border-radius: 20px;
             padding-top: 15px;
@@ -231,10 +234,10 @@
 
                         <div class="col-12 py-2 text-center text-white text-shadow-purple">
                             @if (auth()->user()->isClick < date('Ymd'))
-                                <h5 class="tradeOn d-none">Your Robot Trading Is On</h5>
+                                <h5 class="tradeOn d-none">Your Roboton Trading Is On</h5>
                                 <h6 class="tradeOn d-none">It will Expire:</h6>
                             @else
-                                <h5 class="tradeOn">Your Robot Trading Is On</h5>
+                                <h5 class="tradeOn">Your Roboton Trading Is On</h5>
                                 <h6 class="tradeOn">It will Expire:</h6>
                             @endif
                             <h5 id="counter"></h5>

@@ -17,23 +17,7 @@
             </div>
         </div>
         <div class="main-container">
-            <div class="container mb-4">
-                <div class="card border-0 mb-3">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-auto pr-0">
-                                <div class="avatar avatar-50 border-0 bg-danger-light rounded-circle text-danger">
-                                    <i class="material-icons vm text-template">share</i>
-                                </div>
-                            </div>
-                            <div class="col-auto align-self-center">
-                                <h6 class="mb-1">Refer and Earn Rewards</h6>
-                                <p class="small text-secondary">Share your referal link and start earning</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <div class="container mb-4">
                 <div class="alert alert-success d-none" id="successmessage">Refferal link copied</div>
                 <div class="input-group mb-3">
@@ -72,7 +56,23 @@
 
             </div>
 
-            
+            <div class="container mb-4">
+                <div class="card border-0 mb-3">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-auto pr-0">
+                                <div class="avatar avatar-50 border-0 bg-danger-light rounded-circle text-danger">
+                                    <i class="material-icons vm text-template">share</i>
+                                </div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                                <h6 class="mb-1">Refer and Earn Rewards</h6>
+                                <p class="small text-secondary">Share your referal link and start earning</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="container mb-4">
                 <div class="card mb-3">
@@ -89,7 +89,15 @@
                         </div>
                     </div>
                 </div>
-                <h6 class="subtitle mb-3 text-center">Team Member - <b class="text-info">{{$refUsers->count()}}</b></h6>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" value="Team Member" disabled>
+                    <div class="input-group-append">
+                        <button class="btn btn-default rounded" type="button" id="basic-addon2"
+                            onclick="copyRefLink()">(<b class="text-white">{{$refUsers->count()}}</b>)</button>
+                    </div>
+                </div>
+                
+                {{-- <h6 class="subtitle mb-3 text-center">Team Member - <b class="text-info">{{$refUsers->count()}}</b></h6> --}}
                 <div class="row">
                     @forelse($refUsers as $data)
                         <div class="col-12 mb-2">
